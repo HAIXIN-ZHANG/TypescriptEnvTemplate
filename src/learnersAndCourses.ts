@@ -35,7 +35,13 @@ export const learnersAndCoursesFn = (learnerData: LearnerData): string[] => {
 	const courseCountStore: number[] = []
 	const outPut: string[] = []
 
-	// const getUncommonValue = ( )
+	const helpFn = (courseData: string[]) => {
+		courseData.forEach((course: string) => {
+			const index = dataStore.findIndex(course)
+		})
+	}
+
+	Object.values(learnerData).forEach(() => {})
 
 	console.log(typeof learnerData)
 	return outPut
