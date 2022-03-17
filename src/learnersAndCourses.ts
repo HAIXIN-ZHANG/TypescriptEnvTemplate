@@ -1,4 +1,4 @@
-export const myJson = `
+const myJson = `
 {
     
         "Learner-0001": [
@@ -37,12 +37,24 @@ export const learnersAndCoursesFn = (learnerData: LearnerData): string[] => {
 
 	const helpFn = (courseData: string[]) => {
 		courseData.forEach((course: string) => {
-			const index = dataStore.findIndex(course)
+			const index = dataStore.findIndex((data) => data === course)
+			if (index === -1) {
+				dataStore.push(course)
+				courseCountStore.push(1)
+			} else {
+				courseCountStore[index]++
+			}
 		})
 	}
 
-	Object.values(learnerData).forEach(() => {})
+	Object.values(learnerData).forEach((courseData: string[]) => {
+		helpFn(courseData)
+	})
 
-	console.log(typeof learnerData)
+	courseCountStore.filter((courseCount, index) => {
+		if (courseCount === 1) return outPut.push(dataStore[index])
+		return false
+	})
+
 	return outPut
 }
